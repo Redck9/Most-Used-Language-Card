@@ -27,7 +27,7 @@ jobs:
             
       - name: Copy image to public repository
         run: |
-          cp ../Most-Used-Languages-Git/images/language_stats.png ./images/language_stats.png
+          cp Most-Used-Languages-Git/images/language_stats.png ./images/language_stats.png
 
       - name: Commit and push the updated image
         run: |
