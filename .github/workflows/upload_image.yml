@@ -3,8 +3,9 @@ name: Upload Image
 on:
   workflow_run:
     workflows: ["Update Language Stats"]  # The name of the previous workflow
-    types:
+    types:  
       - completed  # Only run when the previous workflow has completed
+  workflow_dispatch:
 
 jobs:
   upload-image:
