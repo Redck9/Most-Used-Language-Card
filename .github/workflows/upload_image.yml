@@ -18,6 +18,13 @@ jobs:
           repository: Redck9/Most-Used-Language-Card  # Your public repository name
           token: ${{ secrets.GH_TOKEN }}  # Use the token to access the public repo
 
+      - name: Checkout Most-Used-Languages-Git repository
+        uses: actions/checkout@v3
+        with:
+          repository: Redck9/Most-Used-Languages-Git  # Your private repository name
+          token: ${{ secrets.GH_TOKEN }}  # Use the same token to access the private repo
+          path: Most-Used-Languages-Git  # Check out to a specific path
+            
       - name: Copy image to public repository
         run: |
           cp ../Most-Used-Languages-Git/images/language_stats.png ./images/language_stats.png
