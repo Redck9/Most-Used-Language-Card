@@ -25,6 +25,9 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}  # Use the same token to access the private repo
           path: Most-Used-Languages-Git  # Check out to a specific path
             
+      - name: Create images directory
+        run: mkdir -p ./images  # Create the images directory if it doesn't exist
+              
       - name: Copy image to public repository
         run: |
           cp Most-Used-Languages-Git/images/language_stats.png ./images/language_stats.png
