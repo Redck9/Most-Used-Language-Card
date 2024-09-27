@@ -37,7 +37,11 @@ jobs:
           git config --local user.name "Redck9"
           git config --local user.email "rpedroslb@gmail.com"
           git add images/language_stats.png
-          git commit -m "Update language stats image"
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update language stats image"
+            git push
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
