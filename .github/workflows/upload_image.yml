@@ -13,17 +13,26 @@ jobs:
 
     steps:
       - name: Checkout public repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: Redck9/Most-Used-Language-Card  # Your public repository name
+          ref: main
           token: ${{ secrets.GH_TOKEN }}  # Use the token to access the public repo
 
       - name: Checkout Most-Used-Languages-Git repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: Redck9/Most-Used-Languages-Git  # Your private repository name
+          ref: main
           token: ${{ secrets.GH_TOKEN }}  # Use the same token to access the private repo
           path: Most-Used-Languages-Git  # Check out to a specific path
+
+      - name: Verify image exists
+        run: |
+          if [ ! -f "Most-Used-Languages-Git/images/language_stats.png" ]; then
+            echo "Image not found!"
+            exit 1
+          fi
             
       - name: Create images directory
         run: mkdir -p ./images  # Create the images directory if it doesn't exist
